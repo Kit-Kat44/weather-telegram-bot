@@ -1,1 +1,12 @@
+version: '3.8'
 
+services:
+  weather-bot:
+    build: .
+    container_name: weather-telegram-bot
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+    volumes:
+      - ./logs:/app/logs
